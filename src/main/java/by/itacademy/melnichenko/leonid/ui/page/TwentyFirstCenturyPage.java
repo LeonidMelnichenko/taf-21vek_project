@@ -2,6 +2,7 @@ package by.itacademy.melnichenko.leonid.ui.page;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 
 public class TwentyFirstCenturyPage {
     private WebDriver webDriver;
@@ -11,6 +12,8 @@ public class TwentyFirstCenturyPage {
     private String inputPasswordLocator = "//*[@id='login-password']";
     private String buttonEnterToLoginFormLocator = "//*[@id='default-modal']/div/div/div[2]/div/div/" +
             "form/div/div[2]/div[3]/button";
+    private String resulttextAfterIncorrectEnterLocator = "//*[@id='default-modal']/div/div/div[2]/div/div/form/div/div[2]" +
+            "/div[2]/div[3]/span[2]/span/text()";
     private String url = "https://www.21vek.by/";
 
     public TwentyFirstCenturyPage(WebDriver webDriver) {
@@ -33,6 +36,10 @@ public class TwentyFirstCenturyPage {
     }
     public void clickButtonEnterToLoginForm(){
         webDriver.findElement(By.xpath(buttonEnterToLoginFormLocator)).click();
+    }
+    public String getResulttextAfterIncorrectEnter(){
+        WebElement expectedText = webDriver.findElement(By.xpath(resulttextAfterIncorrectEnterLocator));
+        return expectedText.getText();
     }
 }
 

@@ -1,12 +1,12 @@
 package by.itacademy.melnichenko.leonid.ui.step;
 
-import by.itacademy.melnichenko.leonid.ui.page._21vekPage;
+import by.itacademy.melnichenko.leonid.ui.page.TwentyFirstCenturyPage;
 import org.openqa.selenium.WebDriver;
 
-public class _21vekStep {
-        _21vekPage page;
-        public _21vekStep(WebDriver driver) {
-            page = new _21vekPage(driver);
+public class TwentyFirstCenturyStep {
+        TwentyFirstCenturyPage page;
+        public TwentyFirstCenturyStep(WebDriver driver) {
+            page = new TwentyFirstCenturyPage(driver);
         }
         public  void fillLoginFormAndSubmit(String email, String password){
                 page.clickButtonAccount();

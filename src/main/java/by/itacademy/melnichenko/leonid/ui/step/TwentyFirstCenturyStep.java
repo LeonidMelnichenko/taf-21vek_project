@@ -21,4 +21,9 @@ public class TwentyFirstCenturyStep {
                 page.setInputEmail(email);
                 page.clickButtonEnterToLoginForm();
         }
+        public  void fillLoginFormAndSubmit(){
+                page.clickButtonAccount();
+                page.clickButtonEnter();
+                page.clickButtonEnterToLoginForm();
+        }
 }

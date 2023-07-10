@@ -12,8 +12,11 @@ public class TwentyFirstCenturyPage {
     private String inputPasswordLocator = "//*[@id='login-password']";
     private String buttonEnterToLoginFormLocator = "//*[@id='default-modal']/div/div/div[2]/div/div/" +
             "form/div/div[2]/div[3]/button";
-    private String resulttextAfterIncorrectEnterLocator = "//*[@id='default-modal']/div/div/div[2]/div/div/form/div/div[2]" +
-            "/div[2]/div[3]/span[2]/span/text()";
+    private String resulttextAfterIncorrectEnterLocator = "//*[@id='default-modal']/div/div/div[2]/div/div/form/div/div[2]/div[1]/div[3]/span[2]/span/text()";
+    private String buttonClickToCookies = "//*[@id='modal-cookie']/div/div[2]/div/button[2]/div";
+    private String resultIncorrectFormatOfEmail = "//*[@id='default-modal']/div/div/div[2]/div/div/form/div/div[2]/div[1]/div[3]/span[2]";
+    private String resultWithEmptyEmail = "//*[@id='default-modal']/div/div/div[2]/div/div/form/div/div[2]/div[1]/div[3]/span[2]";
+    private String resultWithEmptyPassword = "//*[@id='default-modal']/div/div/div[2]/div/div/form/div/div[2]/div[2]/div[3]/span[2]";
     private String url = "https://www.21vek.by/";
 
     public TwentyFirstCenturyPage(WebDriver webDriver) {
@@ -37,9 +40,25 @@ public class TwentyFirstCenturyPage {
     public void clickButtonEnterToLoginForm(){
         webDriver.findElement(By.xpath(buttonEnterToLoginFormLocator)).click();
     }
-    public String getResulttextAfterIncorrectEnter(){
+    public String getResultTextAfterIncorrectEnter(){
         WebElement expectedText = webDriver.findElement(By.xpath(resulttextAfterIncorrectEnterLocator));
         return expectedText.getText();
+    }
+    public String getResultAfterIncorrectFormatOfEmail(){
+        WebElement expecterdText = webDriver.findElement(By.xpath(resultIncorrectFormatOfEmail));
+        return  expecterdText.getText();
+    }
+
+    public String getResultWithEmptyEmail(){
+        WebElement expectedText = webDriver.findElement(By.xpath(resultWithEmptyEmail));
+        return expectedText.getText();
+    }
+    public String getResultWithEmptyPassword(){
+        WebElement expectedText = webDriver.findElement(By.xpath(resultWithEmptyPassword));
+        return expectedText.getText();
+    }
+    public void clickButtonCookies(){
+        webDriver.findElement(By.xpath(buttonClickToCookies)).click();
     }
 }
 

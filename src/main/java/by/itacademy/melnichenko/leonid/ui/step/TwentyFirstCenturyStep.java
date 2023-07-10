@@ -9,21 +9,11 @@ public class TwentyFirstCenturyStep {
             page = new TwentyFirstCenturyPage(driver);
         }
         public  void fillLoginFormAndSubmit(String email, String password){
+                page.clickButtonCookies();
                 page.clickButtonAccount();
                 page.clickButtonEnter();
                 page.setInputEmail(email);
                 page.setInputPassword(password);
                 page.clickButtonEnterToLoginForm();
         }
-        public  void fillLoginFormAndSubmit(String email){
-                page.clickButtonAccount();
-                page.clickButtonEnter();
-                page.setInputEmail(email);
-                page.clickButtonEnterToLoginForm();
-        }
-        public  void fillLoginFormAndSubmit(){
-                page.clickButtonAccount();
-                page.clickButtonEnter();
-                page.clickButtonEnterToLoginForm();
-        }
-}
+    }

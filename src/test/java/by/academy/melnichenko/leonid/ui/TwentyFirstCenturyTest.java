@@ -21,6 +21,7 @@ public class TwentyFirstCenturyTest {
     @BeforeEach
     public void beforeTest() throws InterruptedException {
         chromeDriver = new ChromeDriver();
+        chromeDriver.manage().deleteAllCookies();
         page = new TwentyFirstCenturyPage(chromeDriver);
         step = new TwentyFirstCenturyStep(chromeDriver);
         demoFaker = new DemoFaker(new Faker());

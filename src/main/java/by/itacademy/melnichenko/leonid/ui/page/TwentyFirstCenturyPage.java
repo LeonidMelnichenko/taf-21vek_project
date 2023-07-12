@@ -6,18 +6,18 @@ import org.openqa.selenium.WebElement;
 
 public class TwentyFirstCenturyPage {
     private WebDriver webDriver;
-    private String buttonAccountLocator = "//*[@id='header']/div/div[3]/div/div[3]/div/div/div/button";
-    private String buttonEnterLocator = "//*[@id='userToolsDropDown']/div/div[1]/div[2]/button";
+    private String url = "https://www.21vek.by/";
+    private String buttonAccountLocator = "//*[@class='userToolsText']";
+    private String buttonEnterLocator = "//button[@data-testid='loginButton']";
     private String inputEmailLocator = "//*[@id='login-email']";
     private String inputPasswordLocator = "//*[@id='login-password']";
-    private String buttonEnterToLoginFormLocator = "//*[@id='default-modal']/div/div/div[2]/div/div/" +
-            "form/div/div[2]/div[3]/button";
-    private String resulttextAfterIncorrectEnterLocator = "//*[@id='default-modal']/div/div/div[2]/div/div/form/div/div[2]/div[1]/div[3]/span[2]/span/text()";
+    private String buttonEnterToLoginFormLocator = "//button[@data-testid='loginSubmit']";
     private String buttonClickToCookies = "//*[@id='modal-cookie']/div/div[2]/div/button[2]/div";
-    private String resultIncorrectFormatOfEmail = "//*[@id='default-modal']/div/div/div[2]/div/div/form/div/div[2]/div[1]/div[3]/span[2]";
-    private String resultWithEmptyEmail = "//*[@id='default-modal']/div/div/div[2]/div/div/form/div/div[2]/div[1]/div[3]/span[2]";
-    private String resultWithEmptyPassword = "//*[@id='default-modal']/div/div/div[2]/div/div/form/div/div[2]/div[2]/div[3]/span[2]";
-    private String url = "https://www.21vek.by/";
+    private String resultTextAfterInvalidCredentinalsLocator = "//*[@class='styles_errorText__3XlSD']";
+    private String resultTextAfterIncorrectFormatOfEmail = "//div[2]/div[1]/div[3]/span[2]";
+    private String resultWithEmptyEmail = "//div[1]/div[3]/span[2]";
+    private String resultWithEmptyPassword = "//div[2]/div[3]/span[2]";
+
 
     public TwentyFirstCenturyPage(WebDriver webDriver) {
         this.webDriver = webDriver;
@@ -40,12 +40,12 @@ public class TwentyFirstCenturyPage {
     public void clickButtonEnterToLoginForm(){
         webDriver.findElement(By.xpath(buttonEnterToLoginFormLocator)).click();
     }
-    public String getResultTextAfterIncorrectEnter(){
-        WebElement expectedText = webDriver.findElement(By.xpath(resulttextAfterIncorrectEnterLocator));
+    public String getTextAfterInvalidCredentinals(){
+        WebElement expectedText = webDriver.findElement(By.xpath(resultTextAfterInvalidCredentinalsLocator));
         return expectedText.getText();
     }
     public String getResultAfterIncorrectFormatOfEmail(){
-        WebElement expecterdText = webDriver.findElement(By.xpath(resultIncorrectFormatOfEmail));
+        WebElement expecterdText = webDriver.findElement(By.xpath(resultTextAfterIncorrectFormatOfEmail));
         return  expecterdText.getText();
     }
 

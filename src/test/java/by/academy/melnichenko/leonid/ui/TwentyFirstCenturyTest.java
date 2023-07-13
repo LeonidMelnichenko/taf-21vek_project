@@ -36,9 +36,9 @@ public class TwentyFirstCenturyTest {
     public void testEnterWithAnyCorrectEmailAndAnyPassword(){
         step.fillLoginFormAndSubmit(demoFaker.generateFakerEmail(), demoFaker.genarateFakerPassword());
 
-        String actualResult = page.getResultTextAfterIncorrectEnter();
+        String actualResult = page.getTextAfterInvalidCredentinals();
         System.out.println(actualResult);
-//        Assertions.assertEquals("Нет такого аккаунта. " + "Зарегистрироваться?", actualResult);
+        Assertions.assertEquals("Нет такого аккаунта. \nЗарегистрироваться?", actualResult);
     }
 
     @Test

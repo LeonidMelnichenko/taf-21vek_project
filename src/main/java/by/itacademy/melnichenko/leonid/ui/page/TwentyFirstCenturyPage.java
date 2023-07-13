@@ -11,7 +11,8 @@ public class TwentyFirstCenturyPage {
     private String buttonEnterLocator = "//button[@data-testid='loginButton']";
     private String inputEmailLocator = "//*[@id='login-email']";
     private String inputPasswordLocator = "//*[@id='login-password']";
-    private String buttonEnterToLoginFormLocator = "//button[@data-testid='loginSubmit']";
+    private String buttonEnterToLoginFormLocator = "//button[@class='Button-module__button style_baseActionButton__2LQYJ " +
+            "Button-module__blue-primary']";
     private String buttonClickToCookies = "//*[@id='modal-cookie']/div/div[2]/div/button[2]/div";
     private String resultTextAfterInvalidCredentinalsLocator = "//*[@class='styles_errorText__3XlSD']";
     private String resultTextAfterIncorrectFormatOfEmail = "//div[2]/div[1]/div[3]/span[2]";

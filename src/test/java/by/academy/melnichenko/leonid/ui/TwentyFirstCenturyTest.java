@@ -4,14 +4,11 @@ import by.itacademy.melnichenko.leonid.ui.page.TwentyFirstCenturyPage;
 import by.itacademy.melnichenko.leonid.ui.step.TwentyFirstCenturyStep;
 import by.itacademy.melnichenko.leonid.ui.utils.DemoFaker;
 import com.github.javafaker.Faker;
-import org.checkerframework.checker.units.qual.A;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.chrome.ChromeDriver;
-
-import java.util.concurrent.TimeUnit;
 
 public class TwentyFirstCenturyTest {
     ChromeDriver chromeDriver;
@@ -20,9 +17,8 @@ public class TwentyFirstCenturyTest {
     DemoFaker demoFaker;
 
     @BeforeEach
-    public void beforeTest() throws InterruptedException {
+    public void beforeTest(){
         chromeDriver = new ChromeDriver();
-        chromeDriver.manage().deleteAllCookies();
         page = new TwentyFirstCenturyPage(chromeDriver);
         step = new TwentyFirstCenturyStep(chromeDriver);
         demoFaker = new DemoFaker(new Faker());
@@ -32,10 +28,14 @@ public class TwentyFirstCenturyTest {
     public void afterTest(){
         chromeDriver.quit();
     }
+
+    @Test
+    public void testEnterWithValidCredentials(){
+        step.fillLoginFormAndSubmit("majorpayne748@gmail.com", "TzSJ-e@C4YUqniM");
+    }
     @Test
     public void testEnterWithAnyCorrectEmailAndAnyPassword(){
         step.fillLoginFormAndSubmit(demoFaker.generateFakerEmail(), demoFaker.genarateFakerPassword());
-
         String actualResult = page.getTextAfterInvalidCredentinals();
         System.out.println(actualResult);
         Assertions.assertEquals("Нет такого аккаунта. \nЗарегистрироваться?", actualResult);

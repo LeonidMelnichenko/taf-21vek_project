@@ -9,15 +9,16 @@ public class TwentyFirstCenturyPage {
     private String url = "https://www.21vek.by/";
     private String buttonAccountLocator = "//*[@class='userToolsText']";
     private String buttonEnterLocator = "//button[@data-testid='loginButton']";
-    private String inputEmailLocator = "//*[@id='login-email']";
-    private String inputPasswordLocator = "//*[@id='login-password']";
-    private String buttonEnterToLoginFormLocator = "//button[@class='Button-module__button style_baseActionButton__2LQYJ " +
-            "Button-module__blue-primary']";
+    private String inputEmailLocator = "//input[@id='login-email']";
+    private String inputPasswordLocator = "//input[@id='login-password']";
+    private String buttonEnterToLoginFormLocator = "//button[@data-testid='loginSubmit']/div[@class='Button-module__" +
+            "buttonText']";
     private String buttonClickToCookies = "//*[@id='modal-cookie']/div/div[2]/div/button[2]/div";
-    private String resultTextAfterInvalidCredentinalsLocator = "//*[@class='styles_errorText__3XlSD']";
-    private String resultTextAfterIncorrectFormatOfEmail = "//div[2]/div[1]/div[3]/span[2]";
-    private String resultWithEmptyEmail = "//div[1]/div[3]/span[2]";
-    private String resultWithEmptyPassword = "//div[2]/div[3]/span[2]";
+    private String resultTextAfterInvalidCredentialsLocator = "//span[@class='styles_errorText__3XlSD']";
+    private String resultTextAfterIncorrectFormatOfEmail = "//div[@class='input-error-message styles_error__uDzIf']" +
+            "/span[@class='input-error-message__message']";
+    private String resultWithEmptyEmail = "//form/div/div[2]/div[1]/div[3]/span[2]";
+    private String resultWithEmptyPassword = "//form/div/div[2]/div[2]/div[3]/span[2]";
 
 
     public TwentyFirstCenturyPage(WebDriver webDriver) {
@@ -41,8 +42,8 @@ public class TwentyFirstCenturyPage {
     public void clickButtonEnterToLoginForm(){
         webDriver.findElement(By.xpath(buttonEnterToLoginFormLocator)).click();
     }
-    public String getTextAfterInvalidCredentinals(){
-        WebElement expectedText = webDriver.findElement(By.xpath(resultTextAfterInvalidCredentinalsLocator));
+    public String getTextAfterInvalidCredentials(){
+        WebElement expectedText = webDriver.findElement(By.xpath(resultTextAfterInvalidCredentialsLocator));
         return expectedText.getText();
     }
     public String getResultAfterIncorrectFormatOfEmail(){

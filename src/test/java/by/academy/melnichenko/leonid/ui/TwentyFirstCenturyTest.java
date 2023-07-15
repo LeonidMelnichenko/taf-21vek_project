@@ -11,14 +11,19 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+import java.util.concurrent.TimeUnit;
+
 public class TwentyFirstCenturyTest {
     ChromeDriver chromeDriver;
     TwentyFirstCenturyPage page;
     TwentyFirstCenturyStep step;
     DemoFaker demoFaker;
+    private String validEmailAccount = "majorpayne748@gmail.com";
+    private String validPasswordAccount = "TzSJ-e@C4YUqniM";
     @BeforeEach
     public void beforeTest(){
         chromeDriver = new ChromeDriver();
+        chromeDriver.manage().timeouts().implicitlyWait(4, TimeUnit.SECONDS);
         page = new TwentyFirstCenturyPage(chromeDriver);
         step = new TwentyFirstCenturyStep(chromeDriver);
         demoFaker = new DemoFaker(new Faker());
@@ -31,12 +36,12 @@ public class TwentyFirstCenturyTest {
 
     @Test
     public void testEnterWithValidCredentials(){
-        step.fillLoginFormAndSubmit("majorpayne748@gmail.com", "TzSJ-e@C4YUqniM");
+        step.fillLoginFormAndSubmit(validEmailAccount, validPasswordAccount);
     }
     @Test
     public void testEnterWithAnyCorrectEmailAndAnyPassword(){
         step.fillLoginFormAndSubmit(demoFaker.generateFakerEmail(), demoFaker.genarateFakerPassword());
-        String actualResult = page.getTextAfterInvalidCredentinals();
+        String actualResult = page.getTextAfterInvalidCredentials();
         Assertions.assertEquals(Values.NO_ACCOUNT.getValues(), actualResult);
     }
 

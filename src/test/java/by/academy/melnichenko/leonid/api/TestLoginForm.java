@@ -2,9 +2,6 @@ package by.academy.melnichenko.leonid.api;
 
 import by.itacademy.melnichenko.leonid.api.Headers;
 import io.restassured.response.ValidatableResponse;
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-import org.jsoup.select.Elements;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 

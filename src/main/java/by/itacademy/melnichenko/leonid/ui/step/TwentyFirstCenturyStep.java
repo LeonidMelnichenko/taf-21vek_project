@@ -5,8 +5,8 @@ import org.openqa.selenium.WebDriver;
 
 public class TwentyFirstCenturyStep {
         TwentyFirstCenturyPage page;
-        public TwentyFirstCenturyStep(WebDriver driver) {
-            page = new TwentyFirstCenturyPage(driver);
+        public TwentyFirstCenturyStep() {
+            page = new TwentyFirstCenturyPage();
         }
         public  void fillLoginFormAndSubmit(String email, String password){
                 page.clickButtonCookies();

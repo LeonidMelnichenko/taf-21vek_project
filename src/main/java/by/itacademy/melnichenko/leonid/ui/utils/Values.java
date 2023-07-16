@@ -5,7 +5,7 @@ public enum Values {
     INVALID_FORMAT_EMAIL("Неправильный формат электронной почты"),
     EMPTY_EMAIL ("Электронная почта не указана"),
     EMPTY_PASSWORD ("Пароль не указан");
-    private String values;
+    private final String values;
     Values(String values) {
         this.values = values;
     }

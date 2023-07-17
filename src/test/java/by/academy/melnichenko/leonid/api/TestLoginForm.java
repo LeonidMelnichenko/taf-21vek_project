@@ -8,6 +8,7 @@ import org.testng.annotations.Test;
 import java.util.HashMap;
 
 import static io.restassured.RestAssured.given;
+import static org.hamcrest.Matchers.equalTo;
 
 public class TestLoginForm {
     private String urlLoginForm = "https://www.21vek.by/users/login/";
@@ -20,11 +21,13 @@ public class TestLoginForm {
                 "        \"password\": \"TzSJ-e@C4YUqniM\"\n" +
                 "    }\n" +
                 "}";
-        ValidatableResponse response = given().when().headers(headers.getHeaders()).body(body)
-                .post(urlLoginForm).then();
-        String expectedResult = "majorpayne748@gmail.com";
-        Assert.assertEquals(response.extract().asString().contains("majorpayne748@gmail.com"), expectedResult);
-        Assert.assertEquals(response.extract().statusCode(), 200);
+        given().when().header("Content-Type", "application/json").body(body)
+                .post(urlLoginForm).then().assertThat().statusCode(302)
+                .header("content-type", equalTo("text/html; charset=UTF-8"))
+                .header("location", equalTo("https://www.21vek.by/"));
+//        String expectedResult = "majorpayne748@gmail.com";
+//        Assert.assertEquals(response.extract().asString().contains("majorpayne748@gmail.com"), expectedResult);
+//        Assert.assertEquals(response.extract().statusCode(), 200);
     }
     @Test
     public void testEnterWithValidСredentialsSecondVariant() {

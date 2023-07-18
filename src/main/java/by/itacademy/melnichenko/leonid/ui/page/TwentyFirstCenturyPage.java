@@ -1,6 +1,6 @@
 package by.itacademy.melnichenko.leonid.ui.page;
 
-import by.itacademy.melnichenko.leonid.ui.utils.DriverSingletone;
+import by.itacademy.melnichenko.leonid.ui.domain.DriverSingleton;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -14,6 +14,7 @@ public class TwentyFirstCenturyPage {
     private String inputPasswordLocator = "//input[@id='login-password']";
     private String buttonEnterToLoginFormLocator = "//button[@data-testid='loginSubmit']/div[@class='Button-module__" +
             "buttonText']";
+//    private String inputCatalogSearchLocator = "//*[@id='catalogSearch']";
     private String buttonClickToCookies = "//*[@id='modal-cookie']/div/div[2]/div/button[2]/div";
     private String resultTextAfterInvalidCredentialsLocator = "//span[@class='styles_errorText__3XlSD']";
     private String resultTextAfterIncorrectFormatOfEmail = "//div[@class='input-error-message styles_error__uDzIf']" +
@@ -22,7 +23,7 @@ public class TwentyFirstCenturyPage {
     private String resultWithEmptyPassword = "//form/div/div[2]/div[2]/div[3]/span[2]";
 
     public TwentyFirstCenturyPage() {
-        this.webDriver = DriverSingletone.getDriver();
+        this.webDriver = DriverSingleton.getDriver();
     }
 
     public void getUrl() {
@@ -44,6 +45,9 @@ public class TwentyFirstCenturyPage {
     public void setInputPassword(String password) {
         webDriver.findElement(By.xpath(inputPasswordLocator)).sendKeys(password);
     }
+//    public void setInputSearch(String thing){
+//        webDriver.findElement(By.xpath(inputCatalogSearchLocator)).sendKeys(thing).;
+//        }
 
     public void clickButtonEnterToLoginForm() {
         webDriver.findElement(By.xpath(buttonEnterToLoginFormLocator)).click();
@@ -55,8 +59,8 @@ public class TwentyFirstCenturyPage {
     }
 
     public String getResultAfterIncorrectFormatOfEmail() {
-        WebElement expecterdText = webDriver.findElement(By.xpath(resultTextAfterIncorrectFormatOfEmail));
-        return expecterdText.getText();
+        WebElement expectedText = webDriver.findElement(By.xpath(resultTextAfterIncorrectFormatOfEmail));
+        return expectedText.getText();
     }
 
     public String getResultWithEmptyEmail() {

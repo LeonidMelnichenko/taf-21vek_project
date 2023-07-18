@@ -1,11 +1,10 @@
-package by.itacademy.melnichenko.leonid.ui.utils;
+package by.itacademy.melnichenko.leonid.ui.domain;
 
-import org.checkerframework.checker.units.qual.C;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
-public class DriverSingletone {
+public class DriverSingleton {
     private static WebDriver webDriver;
     public static WebDriver getDriver() {
         if(webDriver == null){
@@ -16,7 +15,7 @@ public class DriverSingletone {
         }
         return webDriver;
     }
-    private DriverSingletone() {
+    private DriverSingleton() {
     }
     public static void quit(){
         if(webDriver != null){

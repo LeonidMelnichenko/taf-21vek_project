@@ -1,30 +1,29 @@
 package by.academy.melnichenko.leonid.ui;
 
-import by.itacademy.melnichenko.leonid.ui.utils.Values;
+import by.itacademy.melnichenko.leonid.ui.domain.Errors;
+import by.itacademy.melnichenko.leonid.ui.domain.UserAccount;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 public class TwentyFirstCenturyTest extends BaseTest {
-    private String validEmailAccount = "majorpayne748@gmail.com";
-    private String validPasswordAccount = "TzSJ-e@C4YUqniM";
 
     @Test
     public void testEnterWithValidCredentials() {
-        step.fillLoginFormAndSubmit(validEmailAccount, validPasswordAccount);
+        UserAccount user = new UserAccount();
+        step.fillLoginFormAndSubmit(user.getValidEmailAccount(), user.getValidPasswordAccount());
     }
-
     @Test
     public void testEnterWithAnyCorrectEmailAndAnyPassword() {
         step.fillLoginFormAndSubmit(demoFaker.generateFakerEmail(), demoFaker.genarateFakerPassword());
         String actualResult = page.getTextAfterInvalidCredentials();
-        Assertions.assertEquals(Values.NO_ACCOUNT.getValues(), actualResult);
+        Assertions.assertEquals(Errors.NO_ACCOUNT, actualResult);
     }
 
     @Test
     public void testEnterWithIncorrectFormatOfEmailAndAnyPassword() {
         step.fillLoginFormAndSubmit("qwertyui", demoFaker.genarateFakerPassword());
         String actualResult = page.getResultAfterIncorrectFormatOfEmail();
-        Assertions.assertEquals(Values.INVALID_FORMAT_EMAIL.getValues(), actualResult);
+        Assertions.assertEquals(Errors.INVALID_FORMAT_EMAIL, actualResult);
     }
 
     @Test
@@ -32,7 +31,7 @@ public class TwentyFirstCenturyTest extends BaseTest {
         step.fillLoginFormAndSubmit("", "");
         String actualResult = page.getResultWithEmptyEmail();
         String actualresult2 = page.getResultWithEmptyPassword();
-        Assertions.assertEquals(Values.EMPTY_EMAIL.getValues(), actualResult);
-        Assertions.assertEquals(Values.EMPTY_PASSWORD.getValues(), actualresult2);
+        Assertions.assertEquals(Errors.EMPTY_EMAIL, actualResult);
+        Assertions.assertEquals(Errors.EMPTY_PASSWORD, actualresult2);
     }
 }

@@ -29,6 +29,10 @@ public class TestLoginForm {
 //        Assert.assertEquals(response.extract().asString().contains("majorpayne748@gmail.com"), expectedResult);
 //        Assert.assertEquals(response.extract().statusCode(), 200);
     }
+
+
+
+
     @Test
     public void testEnterWithValidСredentialsSecondVariant() {
         String body = "{\n" +

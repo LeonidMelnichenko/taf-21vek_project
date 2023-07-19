@@ -4,6 +4,10 @@ import by.itacademy.melnichenko.leonid.ui.domain.DriverSingleton;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
 
 public class TwentyFirstCenturyPage {
     private WebDriver webDriver;
@@ -14,13 +18,12 @@ public class TwentyFirstCenturyPage {
     private String inputPasswordLocator = "//input[@id='login-password']";
     private String buttonEnterToLoginFormLocator = "//button[@data-testid='loginSubmit']/div[@class='Button-module__" +
             "buttonText']";
-//    private String inputCatalogSearchLocator = "//*[@id='catalogSearch']";
     private String buttonClickToCookies = "//*[@id='modal-cookie']/div/div[2]/div/button[2]/div";
-    private String resultTextAfterInvalidCredentialsLocator = "//span[@class='styles_errorText__3XlSD']";
-    private String resultTextAfterIncorrectFormatOfEmail = "//div[@class='input-error-message styles_error__uDzIf']" +
+    public String resultTextAfterInvalidCredentialsLocator = "//span[@class='styles_errorText__3XlSD']";
+    public String resultTextAfterIncorrectFormatOfEmail = "//div[@class='input-error-message styles_error__uDzIf']" +
             "/span[@class='input-error-message__message']";
-    private String resultWithEmptyEmail = "//form/div/div[2]/div[1]/div[3]/span[2]";
-    private String resultWithEmptyPassword = "//form/div/div[2]/div[2]/div[3]/span[2]";
+    public String resultWithEmptyEmail = "//form/div/div[2]/div[1]/div[3]/span[2]";
+    public String resultWithEmptyPassword = "//form/div/div[2]/div[2]/div[3]/span[2]";
 
     public TwentyFirstCenturyPage() {
         this.webDriver = DriverSingleton.getDriver();
@@ -49,28 +52,12 @@ public class TwentyFirstCenturyPage {
         webDriver.findElement(By.xpath(buttonEnterToLoginFormLocator)).click();
     }
 
-    public String getTextAfterInvalidCredentials() {
-        WebElement expectedText = webDriver.findElement(By.xpath(resultTextAfterInvalidCredentialsLocator));
-        return expectedText.getText();
+    public String getAlertText(String locator) {
+        WebDriverWait wait = new WebDriverWait(webDriver, Duration.ofSeconds(4));
+        WebElement alertText = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(locator)));
+        return alertText.getText();
     }
-
-    public String getResultAfterIncorrectFormatOfEmail() {
-        WebElement expectedText = webDriver.findElement(By.xpath(resultTextAfterIncorrectFormatOfEmail));
-        return expectedText.getText();
-    }
-
-    public String getResultWithEmptyEmail() {
-        WebElement expectedText = webDriver.findElement(By.xpath(resultWithEmptyEmail));
-        return expectedText.getText();
-    }
-
-    public String getResultWithEmptyPassword() {
-        WebElement expectedText = webDriver.findElement(By.xpath(resultWithEmptyPassword));
-        return expectedText.getText();
-    }
-
     public void clickButtonCookies() {
         webDriver.findElement(By.xpath(buttonClickToCookies)).click();
     }
 }
-

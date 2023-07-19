@@ -45,10 +45,6 @@ public class TwentyFirstCenturyPage {
     public void setInputPassword(String password) {
         webDriver.findElement(By.xpath(inputPasswordLocator)).sendKeys(password);
     }
-//    public void setInputSearch(String thing){
-//        webDriver.findElement(By.xpath(inputCatalogSearchLocator)).sendKeys(thing).;
-//        }
-
     public void clickButtonEnterToLoginForm() {
         webDriver.findElement(By.xpath(buttonEnterToLoginFormLocator)).click();
     }

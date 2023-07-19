@@ -11,9 +11,9 @@ import org.junit.jupiter.api.BeforeEach;
 import java.util.concurrent.TimeUnit;
 
 public class BaseTest {
-    TwentyFirstCenturyPage page;
-    TwentyFirstCenturyStep step;
-    DemoFaker demoFaker;
+    protected TwentyFirstCenturyPage page;
+    protected TwentyFirstCenturyStep step;
+    protected DemoFaker demoFaker;
 
     @BeforeEach
     public void warmUp() {
@@ -23,7 +23,6 @@ public class BaseTest {
         demoFaker = new DemoFaker(new Faker());
         page.getUrl();
     }
-
     @AfterEach
     public void tearDown() {
         DriverSingleton.quit();

@@ -1,6 +1,6 @@
 package by.itacademy.melnichenko.leonid.ui.page;
 
-import by.itacademy.melnichenko.leonid.ui.domain.DriverSingleton;
+import by.itacademy.melnichenko.leonid.ui.driver.DriverSingleton;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;

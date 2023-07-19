@@ -1,4 +1,4 @@
-package by.itacademy.melnichenko.leonid.ui.domain;
+package by.itacademy.melnichenko.leonid.ui.driver;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;

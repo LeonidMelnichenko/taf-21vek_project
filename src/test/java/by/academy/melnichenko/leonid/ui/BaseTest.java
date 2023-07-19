@@ -3,7 +3,7 @@ package by.academy.melnichenko.leonid.ui;
 import by.itacademy.melnichenko.leonid.ui.page.TwentyFirstCenturyPage;
 import by.itacademy.melnichenko.leonid.ui.step.TwentyFirstCenturyStep;
 import by.itacademy.melnichenko.leonid.ui.utils.DemoFaker;
-import by.itacademy.melnichenko.leonid.ui.domain.DriverSingleton;
+import by.itacademy.melnichenko.leonid.ui.driver.DriverSingleton;
 import com.github.javafaker.Faker;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;

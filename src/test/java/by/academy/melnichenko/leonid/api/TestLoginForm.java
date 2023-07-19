@@ -11,7 +11,7 @@ import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
 
 public class TestLoginForm {
-    private String urlLoginForm = "https://www.21vek.by/users/login/";
+    private String urlLoginForm = ;
     Headers headers = new Headers();
     @Test
     public void testEnterWithValidСredentials() {

@@ -15,20 +15,20 @@ public class TwentyFirstCenturyTest extends BaseTest {
     public void testEnterWithAnyInvalidCredentials() {
         step.fillLoginFormAndSubmit(demoFaker.generateFakerEmail(), demoFaker.genarateFakerPassword());
         Assertions.assertEquals(Errors.NO_ACCOUNT,
-                page.getAlertText(page.resultTextAfterInvalidCredentialsLocator));
+                page.getErrorText(page.resultTextAfterInvalidCredentialsLocator));
     }
 
     @Test
     public void testEnterWithIncorrectFormatOfEmailAndAnyPassword() {
         step.fillLoginFormAndSubmit(User.INCORRECT_FORMAT_EMAIL, demoFaker.genarateFakerPassword());
         Assertions.assertEquals(Errors.INVALID_FORMAT_EMAIL,
-                page.getAlertText(page.resultTextAfterIncorrectFormatOfEmail));
+                page.getErrorText(page.resultTextAfterIncorrectFormatOfEmail));
     }
 
     @Test
     public void testEnterWithEmptyFields() {
         step.fillLoginFormAndSubmit("", "");
-        Assertions.assertEquals(Errors.EMPTY_EMAIL, page.getAlertText(page.resultWithEmptyEmail));
-        Assertions.assertEquals(Errors.EMPTY_PASSWORD, page.getAlertText(page.resultWithEmptyPassword));
+        Assertions.assertEquals(Errors.EMPTY_EMAIL, page.getErrorText(page.resultWithEmptyEmail));
+        Assertions.assertEquals(Errors.EMPTY_PASSWORD, page.getErrorText(page.resultWithEmptyPassword));
     }
 }

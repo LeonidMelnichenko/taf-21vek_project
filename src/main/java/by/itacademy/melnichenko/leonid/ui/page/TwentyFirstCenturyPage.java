@@ -52,7 +52,7 @@ public class TwentyFirstCenturyPage {
         webDriver.findElement(By.xpath(buttonEnterToLoginFormLocator)).click();
     }
 
-    public String getAlertText(String locator) {
+    public String getErrorText(String locator) {
         WebDriverWait wait = new WebDriverWait(webDriver, Duration.ofSeconds(4));
         WebElement alertText = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(locator)));
         return alertText.getText();

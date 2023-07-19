@@ -1,6 +1,7 @@
 package by.academy.melnichenko.leonid.api;
 
 import by.itacademy.melnichenko.leonid.api.Headers;
+import by.itacademy.melnichenko.leonid.api.requests.Request;
 import io.restassured.response.ValidatableResponse;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -12,6 +13,7 @@ import static org.hamcrest.Matchers.equalTo;
 
 public class TestLoginForm {
     private String urlLoginForm = "https://www.21vek.by/users/login/";
+    Request request = new Request();
     @Test
     public void testEnterWithValidСredentials() {
         String body = "{\n" +
@@ -20,21 +22,21 @@ public class TestLoginForm {
                 "        \"password\": \"TzSJ-e@C4YUqniM\"\n" +
                 "    }\n" +
                 "}";
-        given().when().header("Content-Type", "application/json").body(body).post(urlLoginForm)
+        given().when().headers(request.getLoginHeadersToCredentials()).body(body).post(urlLoginForm)
                 .then().assertThat()
                 .statusCode(302)
                 .header("content-type", equalTo("text/html; charset=UTF-8"))
                 .header("location", equalTo("https://www.21vek.by/"));
     }
     @Test
-    public void testEnterWithInalidСredentials() {
+    public void testEnterWithInvalidСredentials() {
         String body = "{\n" +
                 "    \"User\": {\n" +
                 "        \"email\": \"qwerty@gmail.com\",\n" +
                 "        \"password\": \"12321312312312\"\n" +
                 "    }\n" +
                 "}";
-        given().when().header("Content-Type", "application/json").body(body).post(urlLoginForm)
+        given().when().headers(request.getLoginHeadersToCredentials()).body(body).post(urlLoginForm)
                 .then()
                 .assertThat()
                 .statusCode(200)
@@ -49,7 +51,7 @@ public class TestLoginForm {
                 "        \"password\": \"\"\n" +
                 "    }\n" +
                 "}";
-        given().when().header("Host", "<calculated when request is sent>").body(body).post(urlLoginForm)
+        given().when().headers(request.getLoginHeadersToEmptyFields()).body(body).post(urlLoginForm)
                 .then()
                 .assertThat()
                 .statusCode(404)

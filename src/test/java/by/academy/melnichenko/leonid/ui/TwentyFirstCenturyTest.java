@@ -11,6 +11,7 @@ public class TwentyFirstCenturyTest extends BaseTest {
     public void testEnterWithValidCredentials() {
         step.fillLoginFormAndSubmit(UserUI.VALID_EMAIL_ACCOUNT, UserUI.VALID_PASSWORD_ACCOUNT);
     }
+
     @Test
     public void testEnterWithAnyInvalidCredentials() {
         step.fillLoginFormAndSubmit(demoFaker.generateFakerEmail(), demoFaker.genarateFakerPassword());

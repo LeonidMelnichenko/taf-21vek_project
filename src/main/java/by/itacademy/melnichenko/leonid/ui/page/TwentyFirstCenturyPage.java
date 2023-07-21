@@ -4,6 +4,7 @@ import by.itacademy.melnichenko.leonid.ui.driver.DriverSingleton;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -12,13 +13,33 @@ import java.time.Duration;
 public class TwentyFirstCenturyPage {
     private WebDriver webDriver;
     private String url = "https://www.21vek.by/";
-    private String buttonAccountLocator = "//*[@class='userToolsText']";
-    private String buttonEnterLocator = "//button[@data-testid='loginButton']";
-    private String inputEmailLocator = "//input[@id='login-email']";
-    private String inputPasswordLocator = "//input[@id='login-password']";
-    private String buttonEnterToLoginFormLocator = "//button[@data-testid='loginSubmit']/div[@class='Button-module__" +
-            "buttonText']";
-    private String buttonClickToCookies = "//*[@id='modal-cookie']/div/div[2]/div/button[2]/div";
+    @FindBy (xpath = "//*[@class='userToolsText']")
+    private WebElement buttonAccount;
+    @FindBy (xpath = "//button[@data-testid='loginButton']")
+    private WebElement buttonEnter;
+    @FindBy(xpath = "//input[@id='login-email']")
+    private WebElement inputEmail;
+    @FindBy(xpath = "//input[@id='login-password']")
+    private WebElement inputPassword;
+    @FindBy(xpath = "//button[@data-testid='loginSubmit']/div[@class='Button-module__buttonText']")
+    private WebElement buttonEnterToLoginForm;
+    @FindBy(xpath = "//*[@id='modal-cookie']/div/div[2]/div/button[2]/div")
+    private WebElement buttonClickToCookies;
+
+    @FindBy(xpath = "//*[@id='header']/div/div[3]/div/button/span)")
+    private WebElement buttonCatalog;
+
+    @FindBy(xpath = "//*[@id='header']/div[1]/div[5]/div/div[1]/div[1]/div[1]/a/span")
+    private WebElement categoryHouseholdAppliances;
+
+    @FindBy(xpath = "//div[3]/div[1]/div[1]/div[1]/a[2]/span")
+    private WebElement categoryFridge;
+
+    @FindBy(xpath = "//*[@id='j-result-page-1']/li[1]/dl/div[2]/form/button")
+    private WebElement putRefrigeInBasket;
+
+    @FindBy(xpath = "//*[@id='header']/div/div[3]/div/div[4]/a/span[2]")
+    private WebElement buttonBacket;
     public String resultTextAfterInvalidCredentialsLocator = "//span[@class='styles_errorText__3XlSD']";
     public String resultTextAfterIncorrectFormatOfEmail = "//div[@class='input-error-message styles_error__uDzIf']" +
             "/span[@class='input-error-message__message']";
@@ -34,22 +55,39 @@ public class TwentyFirstCenturyPage {
     }
 
     public void clickButtonAccount() {
-        webDriver.findElement(By.xpath(buttonAccountLocator)).click();
+        buttonAccount.click();
     }
 
     public void clickButtonEnter() {
-        webDriver.findElement(By.xpath(buttonEnterLocator)).click();
+        buttonEnter.click();
     }
 
     public void setInputEmail(String email) {
-        webDriver.findElement(By.xpath(inputEmailLocator)).sendKeys(email);
+        inputEmail.sendKeys(email);
     }
 
     public void setInputPassword(String password) {
-        webDriver.findElement(By.xpath(inputPasswordLocator)).sendKeys(password);
+        inputPassword.sendKeys(password);
     }
     public void clickButtonEnterToLoginForm() {
-        webDriver.findElement(By.xpath(buttonEnterToLoginFormLocator)).click();
+        buttonEnterToLoginForm.click();
+    }
+
+    public void clickButtonCatalog(){
+        buttonCatalog.click();
+    }
+    public void clickCategoryHouseholdAppliances(){
+        categoryHouseholdAppliances.click();
+    }
+    public void clickCategoryFridge(){
+        categoryFridge.click();
+    }
+    public void clickBacket(){
+        putRefrigeInBasket.click();
+    }
+
+    public void clickButtonBacket(){
+        buttonBacket.click();
     }
 
     public String getErrorText(String locator) {
@@ -58,6 +96,6 @@ public class TwentyFirstCenturyPage {
         return alertText.getText();
     }
     public void clickButtonCookies() {
-        webDriver.findElement(By.xpath(buttonClickToCookies)).click();
+        buttonClickToCookies.click();
     }
 }

@@ -1,9 +1,9 @@
 package by.academy.melnichenko.leonid.api;
 
 import by.itacademy.melnichenko.leonid.api.PageAPI;
+import io.restassured.RestAssured;
 import org.testng.annotations.Test;
 
-import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
 
 public class TestLoginForm {
@@ -27,7 +27,7 @@ public class TestLoginForm {
 
     @Test
     public void testEnterWithEmptyFields() {
-        page.getResponseWithEmptyFields().assertThat()
+        page.getResponseWithEmptyFields()
                 .statusCode(404)
                 .header("content-type", equalTo("text/html"));
     }

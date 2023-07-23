@@ -9,27 +9,27 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-public class TwentyFirstCenturyPage {
+public class LoginPage {
     private WebDriver webDriver;
     private String url = "https://www.21vek.by/";
     private String buttonAccountLocator = "//*[@class='userToolsText']";
     private String buttonEnterLocator = "//button[@data-testid='loginButton']";
     private String inputEmailLocator = "//input[@id='login-email']";
     private String inputPasswordLocator = "//input[@id='login-password']";
-    private String buttonEnterToLoginFormLocator = "//button[@data-testid='loginSubmit']/div[@class='Button-module__" +
-            "buttonText']";
-    private String buttonClickToCookies = "//*[@id='modal-cookie']/div/div[2]/div/button[2]/div";
+    private String buttonEnterToLoginFormLocator = "//button[@data-testid='loginSubmit']";
+    private String buttonClickToCookies = "//div[@class='AgreementCookie_buttons__F4XNa']/button[@class='Button-module__" +
+            "button Button-module__blue-primary']";
     public String resultTextAfterInvalidCredentialsLocator = "//span[@class='styles_errorText__3XlSD']";
     public String resultTextAfterIncorrectFormatOfEmail = "//div[@class='input-error-message styles_error__uDzIf']" +
             "/span[@class='input-error-message__message']";
     public String resultWithEmptyEmail = "//form/div/div[2]/div[1]/div[3]/span[2]";
     public String resultWithEmptyPassword = "//form/div/div[2]/div[2]/div[3]/span[2]";
 
-    public TwentyFirstCenturyPage() {
+    public LoginPage() {
         this.webDriver = DriverSingleton.getDriver();
     }
 
-    public void getUrl() {
+    public void openBaseUrl() {
         webDriver.get(url);
     }
 
@@ -53,9 +53,7 @@ public class TwentyFirstCenturyPage {
     }
 
     public String getErrorText(String locator) {
-        WebDriverWait wait = new WebDriverWait(webDriver, Duration.ofSeconds(4));
-        WebElement alertText = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(locator)));
-        return alertText.getText();
+        return webDriver.findElement(By.xpath(locator)).getText();
     }
     public void clickButtonCookies() {
         webDriver.findElement(By.xpath(buttonClickToCookies)).click();

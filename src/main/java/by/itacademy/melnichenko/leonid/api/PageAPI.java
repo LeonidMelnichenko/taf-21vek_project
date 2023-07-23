@@ -9,7 +9,7 @@ import static io.restassured.RestAssured.given;
 public class PageAPI {
     private String urlLoginForm = "https://www.21vek.by/users/login/";
     private String subjectToSearch = "https://www.21vek.by/tv/";
-    private String invalidValuesToSearch = "https://www.21vek.by/search/?sa=&term=%40%23%24%25%25%25%25%25%25";
+    private String searchUrl = "https://www.21vek.by/search/";
     UserAPI userAPI = new UserAPI();
 
     public HashMap<String, String> getLoginHeadersToCredentials() {
@@ -50,19 +50,15 @@ public class PageAPI {
                 "Gecko) Chrome/109.0.0.0 Safari/537.36");
         return searchHeaders;
     }
-    public String getSearchParams(){
+    public HashMap<String, String> getSearchParams(){
         HashMap<String, String> searchParams = new HashMap<>();
         searchParams.put("sa", "");
-        searchParams.put("term", "%40%23%24%25%25%25%25%25%25");
-        return String.valueOf(searchParams);
+        searchParams.put("term", "Телевизоры");
+        searchParams.put("searchIf", "bc99e2ba90424e9f99cf83b7c1665296");
+        return searchParams;
     }
     public ValidatableResponse getSearchSomething(){
-        return given().when().headers(getSearchHeaders())
-                .get(subjectToSearch).then();
-    }
-
-    public ValidatableResponse getSearchWithInvalidValues(){
-        return given().when().queryParam(getSearchParams()).headers(getSearchHeaders())
-                .get(invalidValuesToSearch).then();
+        return given().when().queryParams(getSearchParams()).headers(getSearchHeaders())
+                .get(searchUrl).then();
     }
 }

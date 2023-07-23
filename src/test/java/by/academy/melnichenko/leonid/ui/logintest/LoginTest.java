@@ -1,11 +1,12 @@
-package by.academy.melnichenko.leonid.ui;
+package by.academy.melnichenko.leonid.ui.logintest;
 
+import by.academy.melnichenko.leonid.ui.logintest.BaseLoginTest;
 import by.itacademy.melnichenko.leonid.ui.domain.Errors;
 import by.itacademy.melnichenko.leonid.ui.domain.UserUI;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-public class TwentyFirstCenturyTest extends BaseTest {
+public class LoginTest extends BaseLoginTest {
 
     @Test
     public void testEnterWithValidCredentials() {
@@ -14,14 +15,14 @@ public class TwentyFirstCenturyTest extends BaseTest {
 
     @Test
     public void testEnterWithAnyInvalidCredentials() {
-        step.fillLoginFormAndSubmit(demoFaker.generateFakerEmail(), demoFaker.genarateFakerPassword());
+        step.fillLoginFormAndSubmit(faker.generateFakerEmail(), faker.genarateFakerPassword());
         Assertions.assertEquals(Errors.NO_ACCOUNT,
                 page.getErrorText(page.resultTextAfterInvalidCredentialsLocator));
     }
 
     @Test
     public void testEnterWithIncorrectFormatOfEmailAndAnyPassword() {
-        step.fillLoginFormAndSubmit(UserUI.INCORRECT_FORMAT_EMAIL, demoFaker.genarateFakerPassword());
+        step.fillLoginFormAndSubmit(UserUI.INCORRECT_FORMAT_EMAIL, faker.genarateFakerPassword());
         Assertions.assertEquals(Errors.INVALID_FORMAT_EMAIL,
                 page.getErrorText(page.resultTextAfterIncorrectFormatOfEmail));
     }

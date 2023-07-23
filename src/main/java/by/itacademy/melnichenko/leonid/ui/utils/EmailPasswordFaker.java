@@ -2,9 +2,9 @@ package by.itacademy.melnichenko.leonid.ui.utils;
 
 import com.github.javafaker.Faker;
 
-public class DemoFaker {
+public class EmailPasswordFaker {
     Faker faker;
-    public DemoFaker(Faker faker) {
+    public EmailPasswordFaker(Faker faker) {
         this.faker = faker;
     }
     public String generateFakerEmail(){

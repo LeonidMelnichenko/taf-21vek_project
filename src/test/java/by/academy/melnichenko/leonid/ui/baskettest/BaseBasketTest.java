@@ -9,12 +9,13 @@ import org.testng.annotations.BeforeMethod;
 import java.util.concurrent.TimeUnit;
 
 public class BaseBasketTest {
-    BasketPage page;
-    BasketStep step;
+    protected BasketPage page;
+    protected BasketStep step;
+    protected final int WAIT_TIMEOUT_SECONDS = 10;
 
     @BeforeMethod
     public void warmUp() {
-        DriverSingleton.getDriver().manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        DriverSingleton.getDriver().manage().timeouts().implicitlyWait(WAIT_TIMEOUT_SECONDS, TimeUnit.SECONDS);
         page = new BasketPage();
         step = new BasketStep();
         page.openBaseUrl();

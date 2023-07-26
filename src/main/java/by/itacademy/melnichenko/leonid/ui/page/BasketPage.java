@@ -7,6 +7,7 @@ import org.openqa.selenium.WebDriver;
 public class BasketPage {
     private WebDriver webDriver;
     private String url = "https://www.21vek.by/";
+    public final int WAIT_TIMEOUT_SECONDS = 10;
     private String buttonClickToCookiesLocator = "//button[@class='Button-module__button Button-module__blue-primary']";
     private String buttonCatalogLocator = "//*[@id='header']/div/div[3]/div/button";
     private String categoryHomeAppliancesLocator = "//a[@href='/kitchen/']";

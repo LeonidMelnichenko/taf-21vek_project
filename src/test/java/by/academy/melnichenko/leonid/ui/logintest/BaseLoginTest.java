@@ -14,10 +14,11 @@ public class BaseLoginTest {
     protected LoginPage page;
     protected LoginStep step;
     protected EmailPasswordFaker faker;
+    protected final int WAIT_TIMEOUT_SECONDS = 10;
 
     @BeforeMethod
     public void warmUp() {
-        DriverSingleton.getDriver().manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        DriverSingleton.getDriver().manage().timeouts().implicitlyWait(WAIT_TIMEOUT_SECONDS, TimeUnit.SECONDS);
         page = new LoginPage();
         step = new LoginStep();
         faker = new EmailPasswordFaker(new Faker());

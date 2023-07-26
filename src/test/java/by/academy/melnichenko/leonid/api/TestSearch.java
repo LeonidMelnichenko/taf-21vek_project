@@ -13,6 +13,7 @@ public class TestSearch {
     @Test
     public void testSearchTV() {
         ValidatableResponse response = page.getSearchSomething();
+        System.out.println(response);
         response.assertThat().statusCode(200);
         String title = Jsoup.parse(response.extract().asString()).body().getElementsByTag("h1").get(0).text();
         Assert.assertEquals(title, "Результаты поиска");

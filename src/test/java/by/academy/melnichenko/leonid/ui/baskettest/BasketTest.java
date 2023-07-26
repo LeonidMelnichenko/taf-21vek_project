@@ -1,6 +1,6 @@
 package by.academy.melnichenko.leonid.ui.baskettest;
 
-import org.junit.jupiter.api.Assertions;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class BasketTest extends BaseBasketTest {
@@ -8,7 +8,7 @@ public class BasketTest extends BaseBasketTest {
     @Test
     public void testBasket() {
         step.fillBasket();
-        Assertions.assertEquals("Холодильник с морозильником Renova RID-80W",
+        Assert.assertEquals("Холодильник с морозильником Renova RID-80W",
                 page.getFoundRefrigeInBasket());
     }
 }

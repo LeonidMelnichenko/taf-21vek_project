@@ -1,7 +1,6 @@
 package by.academy.melnichenko.leonid.api;
 
 import by.itacademy.melnichenko.leonid.api.PageAPI;
-import io.restassured.RestAssured;
 import org.testng.annotations.Test;
 
 import static org.hamcrest.Matchers.equalTo;

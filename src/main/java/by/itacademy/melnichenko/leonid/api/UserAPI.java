@@ -14,26 +14,31 @@ public class UserAPI {
     public UserAPI() {
     }
 
-    private HashMap<String, Object> createCredentials(String email, String password) {
+    private static HashMap<String, UserAPI> createCredentials(String email, String password) {
         UserAPI userAPI = new UserAPI(email, password);
-        HashMap<String, Object> validCredentials = new HashMap<>();
+        HashMap<String, UserAPI> validCredentials = new HashMap<>();
         validCredentials.put("User", userAPI);
         return validCredentials;
     }
 
-    public HashMap<String, Object> getValidCredentials() {
+    public static HashMap<String, UserAPI> getValidCredentials() {
         return createCredentials("majorpayne748@gmail.com", "TzSJ-e@C4YUqniM");
     }
 
-    public HashMap<String, Object> getInvalidCredentials() {
-        return createCredentials("test12345@test.com", "1q2w3");
+    public static HashMap<String, UserAPI> getInvalidCredentials() {
+        return createCredentials("test12345@test.com", "1q2w357567");
     }
 
-    public HashMap<String, Object> getIncorrectFormEmailAndAnyPassword() {
-        return createCredentials("test12345", "1233");
+    public static HashMap<String, UserAPI> getShortPasswordCredentials() {
+        return createCredentials("test12345@test.com", "1q2w");
     }
 
-    public HashMap<String, Object> getEmptyFields() {
+
+    public static HashMap<String, UserAPI> getIncorrectFormEmailAndAnyPassword() {
+        return createCredentials("test12345", "12345678");
+    }
+
+    public static HashMap<String, UserAPI> getEmptyFields() {
         return createCredentials("", "");
     }
 
@@ -43,5 +48,8 @@ public class UserAPI {
                 "email='" + email + '\'' +
                 ", password='" + password + '\'' +
                 '}';
+    }
+    public String getEmail() {
+        return this.email;
     }
 }

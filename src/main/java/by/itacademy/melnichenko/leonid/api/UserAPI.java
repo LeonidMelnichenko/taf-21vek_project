@@ -6,31 +6,35 @@ public class UserAPI {
     public String email;
     public String password;
 
-    public HashMap<String, Object> getValidСredentials() {
-        UserAPI userAPI = new UserAPI();
-        userAPI.email = "majorpayne748@gmail.com";
-        userAPI.password = "TzSJ-e@C4YUqniM";
-        HashMap<String, Object> validСredentials = new HashMap<>();
-        validСredentials.put("User", userAPI);
-        return validСredentials;
+    public UserAPI(String email, String password) {
+        this.email = email;
+        this.password = password;
     }
 
-    public HashMap<String, Object> getInvalidСredentials() {
-        UserAPI userAPI = new UserAPI();
-        userAPI.email = "qwerty@gmail.com";
-        userAPI.password = "12321312312312";
-        HashMap<String, Object> validСredentials = new HashMap<>();
-        validСredentials.put("User", userAPI);
-        return validСredentials;
+    public UserAPI() {
+    }
+
+    private HashMap<String, Object> createCredentials(String email, String password) {
+        UserAPI userAPI = new UserAPI(email, password);
+        HashMap<String, Object> validCredentials = new HashMap<>();
+        validCredentials.put("User", userAPI);
+        return validCredentials;
+    }
+
+    public HashMap<String, Object> getValidCredentials() {
+        return createCredentials("majorpayne748@gmail.com", "TzSJ-e@C4YUqniM");
+    }
+
+    public HashMap<String, Object> getInvalidCredentials() {
+        return createCredentials("test12345@test.com", "1q2w3");
+    }
+
+    public HashMap<String, Object> getIncorrectFormEmailAndAnyPassword() {
+        return createCredentials("test12345", "1233");
     }
 
     public HashMap<String, Object> getEmptyFields() {
-        UserAPI userAPI = new UserAPI();
-        userAPI.email = "";
-        userAPI.password = "";
-        HashMap<String, Object> validСredentials = new HashMap<>();
-        validСredentials.put("User", userAPI);
-        return validСredentials;
+        return createCredentials("", "");
     }
 
     @Override

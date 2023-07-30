@@ -6,31 +6,41 @@ public class UserAPI {
     public String email;
     public String password;
 
-    public HashMap<String, Object> getValidСredentials() {
-        UserAPI userAPI = new UserAPI();
-        userAPI.email = "majorpayne748@gmail.com";
-        userAPI.password = "TzSJ-e@C4YUqniM";
-        HashMap<String, Object> validСredentials = new HashMap<>();
-        validСredentials.put("User", userAPI);
-        return validСredentials;
+    public UserAPI(String email, String password) {
+        this.email = email;
+        this.password = password;
     }
 
-    public HashMap<String, Object> getInvalidСredentials() {
-        UserAPI userAPI = new UserAPI();
-        userAPI.email = "qwerty@gmail.com";
-        userAPI.password = "12321312312312";
-        HashMap<String, Object> validСredentials = new HashMap<>();
-        validСredentials.put("User", userAPI);
-        return validСredentials;
+    private static HashMap<String, UserAPI> createCredentials(String email, String password) {
+        UserAPI userAPI = new UserAPI(email, password);
+        HashMap<String, UserAPI> validCredentials = new HashMap<>();
+        validCredentials.put("User", userAPI);
+        return validCredentials;
     }
 
-    public HashMap<String, Object> getEmptyFields() {
-        UserAPI userAPI = new UserAPI();
-        userAPI.email = "";
-        userAPI.password = "";
-        HashMap<String, Object> validСredentials = new HashMap<>();
-        validСredentials.put("User", userAPI);
-        return validСredentials;
+    public static HashMap<String, UserAPI> getValidCredentials() {
+        return createCredentials("majorpayne748@gmail.com", "TzSJ-e@C4YUqniM");
+    }
+
+    public static HashMap<String, UserAPI> getInvalidCredentials() {
+        return createCredentials("test12345@test.com", "1q2w357567");
+    }
+
+    public static HashMap<String, UserAPI> getShortPasswordCredentials() {
+        return createCredentials("test12345@test.com", "1q2w");
+    }
+
+
+    public static HashMap<String, UserAPI> getIncorrectFormEmailAndAnyPassword() {
+        return createCredentials("test12345", "12345678");
+    }
+
+    public static HashMap<String, UserAPI> getEmptyFields() {
+        return createCredentials("", "");
+    }
+
+    public String getEmail() {
+        return this.email;
     }
 
     @Override
@@ -41,3 +51,4 @@ public class UserAPI {
                 '}';
     }
 }
+

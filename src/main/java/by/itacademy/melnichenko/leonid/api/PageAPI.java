@@ -8,7 +8,6 @@ import static io.restassured.RestAssured.given;
 
 public class PageAPI {
     private String endPointLoginForm = "https://www.21vek.by/users/action/login/";
-    private String subjectToSearch = "https://www.21vek.by/tv/";
     private String endPointSearch = "https://www.21vek.by/search/";
 
     public HashMap<String, String> getHeaders() {
@@ -26,20 +25,22 @@ public class PageAPI {
                 .then();
     }
 
-    public HashMap<String, String> getSearchHeaders(){
+    public HashMap<String, String> getSearchHeaders() {
         HashMap<String, String> searchHeaders = new HashMap<>();
         searchHeaders.put("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like " +
                 "Gecko) Chrome/109.0.0.0 Safari/537.36");
         return searchHeaders;
     }
-    public HashMap<String, String> getSearchParams(){
+
+    public HashMap<String, String> getSearchParams() {
         HashMap<String, String> searchParams = new HashMap<>();
         searchParams.put("sa", "");
         searchParams.put("term", "Телевизоры");
         searchParams.put("searchIf", "bc99e2ba90424e9f99cf83b7c1665296");
         return searchParams;
     }
-    public ValidatableResponse getSearchSomething(){
+
+    public ValidatableResponse getSearchSomething() {
         return given().when().queryParams(getSearchParams()).headers(getSearchHeaders())
                 .get(endPointSearch).then();
     }

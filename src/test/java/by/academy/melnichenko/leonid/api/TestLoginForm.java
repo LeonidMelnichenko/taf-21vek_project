@@ -13,7 +13,7 @@ public class TestLoginForm {
     PageAPI page = new PageAPI();
 
     @Test
-    public void testEnterWithValidСredentials() {
+    public void testEnterWithValidCredentials() {
         HashMap<String, UserAPI> validCreds = UserAPI.getValidCredentials();
         page.getLoginResponse(validCreds).assertThat()
                 .statusCode(200)
@@ -23,14 +23,15 @@ public class TestLoginForm {
     }
 
     @Test
-    public void testEnterWithInvalidСredentials() {
+    public void testEnterWithInvalidCredentials() {
         HashMap<String, UserAPI> invalidCreds = UserAPI.getInvalidCredentials();
         page.getLoginResponse(invalidCreds).assertThat()
                 .statusCode(200)
                 .body("error", equalTo("Неправильный пароль"));
     }
-       @Test
-    public void testEnterWithShortPasswordСredentials() {
+
+    @Test
+    public void testEnterWithShortPasswordCredentials() {
         HashMap<String, UserAPI> shortCreds = UserAPI.getShortPasswordCredentials();
         page.getLoginResponse(shortCreds).assertThat()
                 .statusCode(200)
@@ -45,7 +46,6 @@ public class TestLoginForm {
                 .header("content-type", containsString("application/json"))
                 .body("error", equalTo("Ошибка валидации поля email"));
     }
-
 
     @Test
     public void testEnterWithEmptyFields() {

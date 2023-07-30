@@ -6,7 +6,7 @@ import org.openqa.selenium.WebDriver;
 
 public class LoginPage {
     private WebDriver webDriver;
-    private String url = "https://www.21vek.by/";
+    private String baseUrl = "https://www.21vek.by/";
     private String buttonAccountLocator = "//*[@class='userToolsText']";
     private String buttonEnterLocator = "//button[@data-testid='loginButton']";
     private String inputEmailLocator = "//input[@id='login-email']";
@@ -25,7 +25,7 @@ public class LoginPage {
     }
 
     public void openBaseUrl() {
-        webDriver.get(url);
+        webDriver.get(baseUrl);
     }
 
     public void clickButtonAccount() {
@@ -43,6 +43,7 @@ public class LoginPage {
     public void setInputPassword(String password) {
         webDriver.findElement(By.xpath(inputPasswordLocator)).sendKeys(password);
     }
+
     public void clickButtonEnterToLoginForm() {
         webDriver.findElement(By.xpath(buttonEnterToLoginFormLocator)).click();
     }
@@ -50,6 +51,7 @@ public class LoginPage {
     public String getErrorText(String locator) {
         return webDriver.findElement(By.xpath(locator)).getText();
     }
+
     public void clickButtonCookies() {
         webDriver.findElement(By.xpath(buttonClickToCookies)).click();
     }

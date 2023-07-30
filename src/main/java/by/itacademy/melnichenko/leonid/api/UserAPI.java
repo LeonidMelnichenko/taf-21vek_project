@@ -11,9 +11,6 @@ public class UserAPI {
         this.password = password;
     }
 
-    public UserAPI() {
-    }
-
     private static HashMap<String, UserAPI> createCredentials(String email, String password) {
         UserAPI userAPI = new UserAPI(email, password);
         HashMap<String, UserAPI> validCredentials = new HashMap<>();
@@ -42,6 +39,10 @@ public class UserAPI {
         return createCredentials("", "");
     }
 
+    public String getEmail() {
+        return this.email;
+    }
+
     @Override
     public String toString() {
         return "{" +
@@ -49,7 +50,5 @@ public class UserAPI {
                 ", password='" + password + '\'' +
                 '}';
     }
-    public String getEmail() {
-        return this.email;
-    }
 }
+

@@ -6,7 +6,7 @@ import org.jsoup.Jsoup;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class TestSearch {
+public class SearchTest {
 
     PageAPI page = new PageAPI();
 

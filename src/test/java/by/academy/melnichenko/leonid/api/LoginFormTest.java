@@ -9,7 +9,7 @@ import java.util.HashMap;
 import static org.hamcrest.Matchers.containsString;
 import static org.hamcrest.Matchers.equalTo;
 
-public class TestLoginForm {
+public class LoginFormTest {
     PageAPI page = new PageAPI();
 
     @Test

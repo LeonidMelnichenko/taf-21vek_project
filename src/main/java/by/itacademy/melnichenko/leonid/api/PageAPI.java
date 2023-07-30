@@ -1,5 +1,6 @@
 package by.itacademy.melnichenko.leonid.api;
 
+import io.qameta.allure.Step;
 import io.restassured.response.ValidatableResponse;
 
 import java.util.HashMap;
@@ -18,6 +19,7 @@ public class PageAPI {
         return loginHeaders;
     }
 
+    @Step("Send login request with data {0}")
     public ValidatableResponse getLoginResponse(HashMap<String, UserAPI> loginJSON) {
         return given().when().headers(getHeaders())
                 .body(loginJSON)
@@ -40,8 +42,10 @@ public class PageAPI {
         return searchParams;
     }
 
+    @Step("Send request")
     public ValidatableResponse getSearchSomething() {
         return given().when().queryParams(getSearchParams()).headers(getSearchHeaders())
                 .get(endPointSearch).then();
     }
+
 }

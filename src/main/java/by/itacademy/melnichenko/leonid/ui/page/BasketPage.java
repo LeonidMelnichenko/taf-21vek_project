@@ -1,22 +1,38 @@
 package by.itacademy.melnichenko.leonid.ui.page;
 
 import by.itacademy.melnichenko.leonid.ui.driver.DriverSingleton;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
 public class BasketPage {
     private WebDriver webDriver;
     private String baseUrl = "https://www.21vek.by/";
-    private String buttonClickToCookiesLocator = "//button[@class='Button-module__button Button-module__blue-primary']";
-    private String buttonCatalogLocator = "//*[@id='header']/div/div[3]/div/button";
-    private String categoryHomeAppliancesLocator = "//a[@href='/kitchen/']";
-    private String categoryRefrigeLocator = "//a[@href='https://www.21vek.by/refrigerators/']";
-    private String refrigeToBasketLocator = "//button[@class='g-button g-buybtn result__buybtn cr-buybtn__in j-ga_track']";
-    private String basketLocator = "//div[@class='headerCart']";
-    private String refrigeLocator = "//a[@class='BasketItem_title__m55zb']";
+    @FindBy(xpath = "//button[@class='Button-module__button Button-module__blue-primary']")
+    private WebElement buttonCookies;
+
+    @FindBy(xpath = "//*[@id='header']/div/div[3]/div/button")
+    private WebElement buttonCatalog;
+
+    @FindBy(xpath = "//a[@href='/kitchen/']")
+    private WebElement categoryHomeAppliances;
+
+    @FindBy(xpath = "//a[@href='https://www.21vek.by/refrigerators/']")
+    private WebElement categoryRefrige;
+
+    @FindBy(xpath = "//button[@class='g-button g-buybtn result__buybtn cr-buybtn__in j-ga_track']")
+    private WebElement refrigeToBasket;
+
+    @FindBy(xpath = "//div[@class='headerCart']")
+    private WebElement basket;
+
+    @FindBy(xpath = "//a[@class='BasketItem_title__m55zb']")
+    private WebElement refrige;
 
     public BasketPage() {
         this.webDriver = DriverSingleton.getDriver();
+        PageFactory.initElements(webDriver, this);
     }
 
     public void openBaseUrl() {
@@ -24,30 +40,30 @@ public class BasketPage {
     }
 
     public void clickToButtonCatalog() {
-        webDriver.findElement(By.xpath(buttonCatalogLocator)).click();
+        buttonCatalog.click();
     }
 
     public void clickCategoryHomeAppliances() {
-        webDriver.findElement(By.xpath(categoryHomeAppliancesLocator)).click();
+        categoryHomeAppliances.click();
     }
 
     public void clickCategoryRefrige() {
-        webDriver.findElement(By.xpath(categoryRefrigeLocator)).click();
+        categoryRefrige.click();
     }
 
     public void clickRefrigeToBasket() {
-        webDriver.findElement(By.xpath(refrigeToBasketLocator)).click();
+        refrigeToBasket.click();
     }
 
     public void clickBasket() {
-        webDriver.findElement(By.xpath(basketLocator)).click();
+        basket.click();
     }
 
     public void clickButtonCookies() {
-        webDriver.findElement(By.xpath(buttonClickToCookiesLocator)).click();
+        buttonCookies.click();
     }
 
     public String getFoundRefrigeInBasket() {
-        return webDriver.findElement(By.xpath(refrigeLocator)).getText();
+        return refrige.getText();
     }
 }

@@ -3,18 +3,38 @@ package by.itacademy.melnichenko.leonid.ui.page;
 import by.itacademy.melnichenko.leonid.ui.driver.DriverSingleton;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
 public class LoginPage {
     private WebDriver webDriver;
     private String baseUrl = "https://www.21vek.by/";
-    private String buttonAccountLocator = "//*[@class='userToolsText']";
-    private String buttonEnterLocator = "//button[@data-testid='loginButton']";
-    private String inputEmailLocator = "//input[@id='login-email']";
-    private String inputPasswordLocator = "//input[@id='login-password']";
-    private String buttonEnterToLoginFormLocator = "//button[@data-testid='loginSubmit']";
-    private String buttonClickToCookies = "//div[@class='AgreementCookie_buttons__F4XNa']/button[@class='Button-module__" +
-            "button Button-module__blue-primary']";
-//    private String validAccountLocator = "//div[@class='styles_userToolsIcon__Yya7_']";
+    @FindBy(xpath = "//*[@class='userToolsText']")
+    private WebElement buttonAccount;
+
+    @FindBy(xpath = "//button[@data-testid='loginButton']")
+    private WebElement buttonEnter;
+
+    @FindBy(xpath = "//input[@id='login-email']")
+    private WebElement inputEmail;
+
+    @FindBy(xpath = "//input[@id='login-password']")
+    private WebElement inputPassword;
+
+    @FindBy(xpath = "//button[@data-testid='loginSubmit']")
+    private WebElement buttonEnterToLoginForm;
+
+    @FindBy(xpath = "//div[@class='AgreementCookie_buttons__F4XNa']/button[@class='Button-module__" +
+            "button Button-module__blue-primary']")
+    private WebElement buttonCookies;
+
+    @FindBy(xpath = "//div[@class='styles_userTools__2J7cp undefined']")
+    private WebElement buttonValidAccount;
+
+    @FindBy(xpath = "//*[@class='userToolsSubtitle']")
+    private WebElement nameValidAccount;
+
     public String resultTextAfterInvalidCredentialsLocator = "//span[@class='styles_errorText__3XlSD']";
     public String resultTextAfterIncorrectFormatOfEmail = "//div[@class='input-error-message styles_error__uDzIf']" +
             "/span[@class='input-error-message__message']";
@@ -23,6 +43,7 @@ public class LoginPage {
 
     public LoginPage() {
         this.webDriver = DriverSingleton.getDriver();
+        PageFactory.initElements(webDriver, this);
     }
 
     public void openBaseUrl() {
@@ -30,37 +51,37 @@ public class LoginPage {
     }
 
     public void clickButtonAccount() {
-        webDriver.findElement(By.xpath(buttonAccountLocator)).click();
+        buttonAccount.click();
     }
-//    public void clickButtonValidAccount() {
-//        webDriver.findElement(By.xpath(validAccountLocator)).click();
-//    }
+    public void clickButtonValidAccount() {
+        buttonValidAccount.click();
+    }
 
     public void clickButtonEnter() {
-        webDriver.findElement(By.xpath(buttonEnterLocator)).click();
+        buttonEnter.click();
     }
 
     public void setInputEmail(String email) {
-        webDriver.findElement(By.xpath(inputEmailLocator)).sendKeys(email);
+        inputEmail.sendKeys(email);
     }
 
     public void setInputPassword(String password) {
-        webDriver.findElement(By.xpath(inputPasswordLocator)).sendKeys(password);
+        inputPassword.sendKeys(password);
     }
 
     public void clickButtonEnterToLoginForm() {
-        webDriver.findElement(By.xpath(buttonEnterToLoginFormLocator)).click();
+        buttonEnterToLoginForm.click();
+    }
+
+    public void clickButtonCookies() {
+        buttonCookies.click();
     }
 
     public String getErrorText(String locator) {
         return webDriver.findElement(By.xpath(locator)).getText();
     }
 
-    public void clickButtonCookies() {
-        webDriver.findElement(By.xpath(buttonClickToCookies)).click();
+    public String getFoundValidAccount() {
+        return nameValidAccount.getText();
     }
-
-//    public String getFoundFoundValidAccount() {
-//        return webDriver.findElement(By.xpath(buttonAccountLocator)).getText();
-//    }
 }

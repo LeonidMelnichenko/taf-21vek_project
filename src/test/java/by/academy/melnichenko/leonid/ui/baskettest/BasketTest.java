@@ -8,7 +8,7 @@ public class BasketTest extends BaseBasketTest {
     @Test
     public void testBasket() {
         step.fillBasket();
-        Assert.assertEquals("Холодильник с морозильником Beko CNMV5335E20VS",
+        Assert.assertEquals("Холодильник с морозильником Renova RID-80W",
                 page.getFoundRefrigeInBasket());
     }
 }

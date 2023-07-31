@@ -12,8 +12,8 @@ public class LoginTest extends BaseLoginTest {
         step.navigateToLoginForm();
         step.fillLoginForm(UserUI.VALID_EMAIL_ACCOUNT, UserUI.VALID_PASSWORD_ACCOUNT);
         step.submitLoginForm();
-//        page.clickButtonValidAccount();
-//        Assert.assertEquals(UserUI.VALID_EMAIL_ACCOUNT, page.getFoundFoundValidAccount());
+        step.enterToValidAccount();
+        Assert.assertEquals(UserUI.VALID_EMAIL_ACCOUNT, page.getFoundValidAccount());
     }
 
     @Test

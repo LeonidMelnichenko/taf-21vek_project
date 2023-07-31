@@ -9,26 +9,35 @@ public class LoginTest extends BaseLoginTest {
 
     @Test
     public void testEnterWithValidCredentials() {
-        step.fillLoginFormAndSubmit(UserUI.VALID_EMAIL_ACCOUNT, UserUI.VALID_PASSWORD_ACCOUNT);
+        step.navigateToLoginForm();
+        step.fillLoginForm(UserUI.VALID_EMAIL_ACCOUNT, UserUI.VALID_PASSWORD_ACCOUNT);
+        step.submitLoginForm();
+//        page.clickButtonValidAccount();
+//        Assert.assertEquals(UserUI.VALID_EMAIL_ACCOUNT, page.getFoundFoundValidAccount());
     }
 
     @Test
     public void testEnterWithAnyInvalidCredentials() {
-        step.fillLoginFormAndSubmit(faker.generateFakerEmail(), faker.genarateFakerPassword());
+        step.navigateToLoginForm();
+        step.fillLoginForm(faker.generateFakerEmail(), faker.genarateFakerPassword());
+        step.submitLoginForm();
         Assert.assertEquals(Errors.NO_ACCOUNT,
                 page.getErrorText(page.resultTextAfterInvalidCredentialsLocator));
     }
 
     @Test
     public void testEnterWithIncorrectFormatOfEmailAndAnyPassword() {
-        step.fillLoginFormAndSubmit(UserUI.INCORRECT_FORMAT_EMAIL, faker.genarateFakerPassword());
+        step.navigateToLoginForm();
+        step.fillLoginForm(UserUI.INCORRECT_FORMAT_EMAIL, faker.genarateFakerPassword());
+        step.submitLoginForm();
         Assert.assertEquals(Errors.INVALID_FORMAT_EMAIL,
                 page.getErrorText(page.resultTextAfterIncorrectFormatOfEmail));
     }
 
     @Test
     public void testEnterWithEmptyFields() {
-        step.fillLoginFormAndSubmit("", "");
+        step.navigateToLoginForm();
+        step.submitLoginForm();
         Assert.assertEquals(Errors.EMPTY_EMAIL, page.getErrorText(page.resultWithEmptyEmail));
         Assert.assertEquals(Errors.EMPTY_PASSWORD, page.getErrorText(page.resultWithEmptyPassword));
     }

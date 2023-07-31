@@ -10,13 +10,26 @@ public class LoginStep {
         loginPage = new LoginPage();
     }
 
-    @Step("Login step")
-    public void fillLoginFormAndSubmit(String email, String password) {
+    @Step("Navigate to login form")
+    public void navigateToLoginForm() {
         loginPage.clickButtonCookies();
         loginPage.clickButtonAccount();
         loginPage.clickButtonEnter();
+    }
+
+    @Step("Fill data: email {0} and  password {1}")
+    public void fillLoginForm(String email, String password) {
         loginPage.setInputEmail(email);
         loginPage.setInputPassword(password);
+    }
+
+    @Step("Submit login form")
+    public void submitLoginForm() {
         loginPage.clickButtonEnterToLoginForm();
     }
+
+//    @Step("Check valid account")
+//    public void checkValidAccount(){
+//        loginPage.clickButtonValidAccount();
+//    }
 }

@@ -13,7 +13,7 @@ public class BasketPage {
     private String categoryRefrigeLocator = "//a[@href='https://www.21vek.by/refrigerators/']";
     private String refrigeToBasketLocator = "//button[@class='g-button g-buybtn result__buybtn cr-buybtn__in j-ga_track']";
     private String basketLocator = "//div[@class='headerCart']";
-    private String nameRefrigeLocator = "//a[@class='BasketItem_title__m55zb']";
+    private String refrigeLocator = "//a[@class='BasketItem_title__m55zb']";
 
     public BasketPage() {
         this.webDriver = DriverSingleton.getDriver();
@@ -48,6 +48,6 @@ public class BasketPage {
     }
 
     public String getFoundRefrigeInBasket() {
-        return webDriver.findElement(By.xpath(nameRefrigeLocator)).getText();
+        return webDriver.findElement(By.xpath(refrigeLocator)).getText();
     }
 }

@@ -47,5 +47,4 @@ public class PageAPI {
         return given().when().queryParams(getSearchParams()).headers(getSearchHeaders())
                 .get(endPointSearch).then();
     }
-
 }

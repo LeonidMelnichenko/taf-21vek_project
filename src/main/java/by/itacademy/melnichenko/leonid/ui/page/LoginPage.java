@@ -14,6 +14,7 @@ public class LoginPage {
     private String buttonEnterToLoginFormLocator = "//button[@data-testid='loginSubmit']";
     private String buttonClickToCookies = "//div[@class='AgreementCookie_buttons__F4XNa']/button[@class='Button-module__" +
             "button Button-module__blue-primary']";
+//    private String validAccountLocator = "//div[@class='styles_userToolsIcon__Yya7_']";
     public String resultTextAfterInvalidCredentialsLocator = "//span[@class='styles_errorText__3XlSD']";
     public String resultTextAfterIncorrectFormatOfEmail = "//div[@class='input-error-message styles_error__uDzIf']" +
             "/span[@class='input-error-message__message']";
@@ -31,6 +32,9 @@ public class LoginPage {
     public void clickButtonAccount() {
         webDriver.findElement(By.xpath(buttonAccountLocator)).click();
     }
+//    public void clickButtonValidAccount() {
+//        webDriver.findElement(By.xpath(validAccountLocator)).click();
+//    }
 
     public void clickButtonEnter() {
         webDriver.findElement(By.xpath(buttonEnterLocator)).click();
@@ -55,4 +59,8 @@ public class LoginPage {
     public void clickButtonCookies() {
         webDriver.findElement(By.xpath(buttonClickToCookies)).click();
     }
+
+//    public String getFoundFoundValidAccount() {
+//        return webDriver.findElement(By.xpath(buttonAccountLocator)).getText();
+//    }
 }

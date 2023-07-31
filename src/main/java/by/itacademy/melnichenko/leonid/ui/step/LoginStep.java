@@ -28,8 +28,8 @@ public class LoginStep {
         loginPage.clickButtonEnterToLoginForm();
     }
 
-//    @Step("Check valid account")
-//    public void checkValidAccount(){
-//        loginPage.clickButtonValidAccount();
-//    }
+    @Step("Check valid account")
+    public void enterToValidAccount(){
+        loginPage.clickButtonValidAccount();
+    }
 }
